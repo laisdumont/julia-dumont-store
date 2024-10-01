@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Exemplo de layout com grid de imagens e painel de filtros -->
+<div class="flex p-4 ">
+    <!-- Grade de imagens -->
+    <div class="flex-1 grid grid-cols-4 gap-4 p-4 ml-10">
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja.png' %}" alt="Imagem 1" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja2.png' %}" alt="Imagem 2" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja3.png' %}" alt="Imagem 3" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja.png' %}" alt="Imagem 4" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja.png' %}" alt="Imagem 5" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja2.png' %}" alt="Imagem 6" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja3.png' %}" alt="Imagem 7" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-white shadow rounded overflow-hidden max-h-[250px] max-w-[180px]">
+            <img src="{% static 'images/home/loja.png' %}" alt="Imagem 8" class="w-full h-full object-cover">
+        </div>
+    </div>
+    <!-- Painel de filtros -->
+    <div class="w-1/4 p-4">
+        <h2 class="text-xl font-bold text-red-500 mb-4">FILTROS</h2>
+        <h3 class="font-semibold">PEÇA DE ROUPA</h3>
+        <ul class="list-disc pl-5 text-red-500">
+            <li>Blusas</li>
+            <li>Saias</li>
+            <li>Calças</li>
+            <li>Vestidos</li>
+            <li>Shorts</li>
+            <li>Macacões</li>
+        </ul>
+        
+        <h3 class="font-semibold mt-4">TAMANHO</h3>
+        <ul class="list-disc pl-5 text-red-500">
+            <li>PP</li>
+            <li>P</li>
+            <li>M</li>
+            <li>G</li>
+            <li>GG</li>
+            <li>XG</li>
+        </ul>
+        
+        <h3 class="font-semibold mt-4">CORES</h3>
+        <div class="flex space-x-2">
+            <span class="w-6 h-6 bg-black rounded-full"></span>
+            <span class="w-6 h-6 bg-white rounded-full border border-gray-300"></span>
+            <span class="w-6 h-6 bg-red-500 rounded-full"></span>
+            <span class="w-6 h-6 bg-green-500 rounded-full"></span>
+            <span class="w-6 h-6 bg-blue-500 rounded-full"></span>
+            <span class="w-6 h-6 bg-yellow-500 rounded-full"></span>
+            <span class="w-6 h-6 bg-purple-500 rounded-full"></span>
+        </div>
+    </div>
+</div>
+{% endblock %}png

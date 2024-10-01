@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <div class="relative w-full overflow-hidden my-16">
+        <div class="flex transition-transform duration-500" id="carousel-slides">
+            <div class="carousel-slide flex justify-center items-center min-w-full">
+                <img src="{% static 'images/home/loja.png' %}" alt="Loja 1" class="max-w-full max-h-[500px] object-contain">
+            </div>
+            <div class="carousel-slide flex justify-center items-center min-w-full">
+                <img src="{% static 'images/home/loja2.png' %}" alt="Loja 2" class="max-w-full max-h-[500px] object-contain">
+            </div>
+            <div class="carousel-slide flex justify-center items-center min-w-full">
+                <img src="{% static 'images/home/loja3.png' %}" alt="Loja 3" class="max-w-full max-h-[500px] object-contain">
+            </div>
+        </div>
+    </div>
+{% endblock %}

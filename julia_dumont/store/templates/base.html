@@ -1,0 +1,75 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Adicione isso no seu arquivo HTML para habilitar os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>JULIA DUMONT</title>
+</head>
+<body class="h-screen bg-gradient-to-b from-white via-white to-red-200">
+    <header class="bg-red-600 text-white text-center py-4">
+        <h1 class="text-3xl font-bold">JULIA DUMONT</h1>
+    </header>
+    
+    <nav class="bg-white border-b border-gray-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <ul class="flex space-x-8 px-20 py-4 text-sm font-semibold">
+                <li class="text-white bg-red-600 border-b-2 border-t-2 border-r-4 border-l-4  border-red-600">
+                    <a href="http://localhost:8000/">HOME</a>
+                </li>
+                <li href="locallhost:8000/clothes" class="hover:text-red-600 cursor-pointer">
+                    <a href="http://localhost:8000/clothes">ROUPAS</a>
+                </li>
+                <li class="hover:text-red-600 cursor-pointer">
+                    <a href="http://localhost:8000/about">SOBRE NÓS</a>
+                </li>
+                <li class="hover:text-red-600 cursor-pointer">
+                    <a href="http://localhost:8000/blog">BLOG</a>
+                </li>
+                <li class="hover:text-red-600 cursor-pointer">
+                    <a href="http://localhost:8000/help">INFORMAÇÕES</a>
+                </li>
+            </ul>
+            <div class="flex items-center space-x-1 mr-20 text-sm font-semibold">
+                <span class="hover:text-red-600 cursor-pointer">
+                    <a href="http://localhost:8000/singUp">ENTRAR</a>
+                </span>
+                <span class="material-icons">person</span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let currentIndex = 0; // Índice do slide atual
+            const slides = $('.carousel-slide'); // Seleciona todos os slides
+            const totalSlides = slides.length; // Total de slides
+        
+            function updateCarousel() {
+                const offset = -currentIndex * 100; // Calcula o deslocamento em porcentagem
+                $('#carousel-slides').css('transform', 'translateX(' + offset + '%)'); // Aplica o deslocamento
+            }
+        
+            // Função para avançar automaticamente
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % totalSlides; // Avança para o próximo slide
+                updateCarousel(); // Atualiza o carrossel
+            }, 3000); // Troca de slide a cada 5 segundos
+        });
+    </script>
+</body>
+
+</html>
