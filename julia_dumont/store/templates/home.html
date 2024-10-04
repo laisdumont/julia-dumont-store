@@ -2,17 +2,81 @@
 
 {% block content %}
 {% load static %}
-    <div class="relative w-full overflow-hidden my-16">
-        <div class="flex transition-transform duration-500" id="carousel-slides">
-            <div class="carousel-slide flex justify-center items-center min-w-full">
-                <img src="{% static 'images/home/loja.png' %}" alt="Loja 1" class="max-w-full max-h-[500px] object-contain">
-            </div>
-            <div class="carousel-slide flex justify-center items-center min-w-full">
-                <img src="{% static 'images/home/loja2.png' %}" alt="Loja 2" class="max-w-full max-h-[500px] object-contain">
-            </div>
-            <div class="carousel-slide flex justify-center items-center min-w-full">
-                <img src="{% static 'images/home/loja3.png' %}" alt="Loja 3" class="max-w-full max-h-[500px] object-contain">
-            </div>
+<div class="w-full overflow-hidden pt-6">
+    <div class="flex transition-transform duration-500" id="carousel-slides">
+        <div class="carousel-slide flex justify-center items-center min-w-full">
+            <img src="{% static 'images/home/loja.png' %}" alt="Loja 1" class="shadow rounded max-w-full max-h-[450px] object-contain">
+        </div>
+        <div class="carousel-slide flex justify-center items-center min-w-full">
+            <img src="{% static 'images/home/loja2.png' %}" alt="Loja 2" class="shadow rounded max-w-full max-h-[450px] object-contain">
+        </div>
+        <div class="carousel-slide flex justify-center items-center min-w-full">
+            <img src="{% static 'images/home/loja3.png' %}" alt="Loja 3" class="shadow rounded max-w-full max-h-[450px] object-contain">
         </div>
     </div>
+
+    <div class="flex justify-between items-start bg-white w-screen sticky top-16 pt-2 pb-1 pl-24">
+        <div class="flex space-x-4 pl-10 pt-4">
+            <button class="flex items-center justify-center text-sm font-semibold text-gray-500 hover:text-red-600">
+                Tamanho
+                <div class="material-icons">keyboard_arrow_down</div>
+            </button>
+            <button class="flex items-center justify-center text-sm font-semibold text-gray-500 hover:text-red-600">
+                Categoria
+                <div class="material-icons">keyboard_arrow_down</div>
+            </button>
+            <button class="flex items-center justify-center text-sm font-semibold text-gray-500 hover:text-red-600">
+                Cor
+                <div class="material-icons">keyboard_arrow_down</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Grade de imagens -->
+    <div class="grid grid-cols-5 justify-items-center px-28 pt-6">
+        {% for file in files %}
+            <div class="shadow rounded overflow-hidden min-h-[300px] max-h-[300px] max-w-[200px] min-w-[200px] bg-white">
+                <img src="{% static 'images/clothes/' %}{{file}}" alt="Imagem 1" class="w-full h-full object-cover">
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="flex justify-center items-center space-x-2 mt-6 mb-6">
+        <!-- Paginação -->
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="border rounded-md px-3 py-1 text-gray-600 hover:bg-gray-200">&lt;</a>
+            {% endif %}
+    
+            <!-- Sempre mostra a primeira página -->
+            <a href="?page=1" class="border rounded-md px-3 py-1 {% if 1 == page_obj.number %}text-white bg-red-700{% else %}border rounded-md px-3 py-1 text-gray-600 hover:bg-gray-200{% endif %}">1</a>
+    
+            <!-- Adiciona "..." se a página atual estiver longe das primeiras páginas -->
+            {% if page_obj.number > 4 %}
+                <span>...</span>
+            {% endif %}
+    
+            <!-- Exibe até 3 páginas antes e depois da página atual -->
+            {% for num in page_obj.paginator.page_range %}
+                {% if num > 1 and num < page_obj.paginator.num_pages %}
+                    {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+                        <a href="?page={{ num }}" class="border rounded-md px-3 py-1 {% if num == page_obj.number %}text-white bg-red-700{% else %}border rounded-md px-3 py-1 text-gray-600 hover:bg-gray-200{% endif %}">{{ num }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+    
+            <!-- Adiciona "..." se houver páginas distantes da última -->
+            {% if page_obj.paginator.num_pages > 5 and page_obj.number > 4 %}
+                <span>...</span>
+            {% endif %}
+    
+            <!-- Sempre mostra a última página -->
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="border rounded-md px-3 py-1 {% if page_obj.paginator.num_pages == page_obj.number %}text-white bg-red-700{% else %}border rounded-md px-3 py-1 text-gray-600 hover:bg-gray-200{% endif %}"">{{ page_obj.paginator.num_pages }}</a>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="border rounded-md px-3 py-1 text-gray-600 hover:bg-gray-200">&gt;</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

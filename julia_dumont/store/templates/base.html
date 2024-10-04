@@ -12,40 +12,42 @@
 
     <title>JULIA DUMONT</title>
 </head>
-<body class="h-screen bg-gradient-to-b from-white via-white to-red-200">
-    <header class="bg-red-600 text-white text-center py-4">
+<body class="relative h-screen">
+    <header class="fixed bg-red-700 w-screen text-white text-center py-4 mx-auto">
         <h1 class="text-3xl font-bold">JULIA DUMONT</h1>
     </header>
     
-    <nav class="bg-white border-b border-gray-300">
+    <nav class="pt-16"></nav>
         <div class="container mx-auto flex justify-between items-center">
-            <ul class="flex space-x-8 px-20 py-4 text-sm font-semibold">
-                <li class="text-white bg-red-600 border-b-2 border-t-2 border-r-4 border-l-4  border-red-600">
+            <ul class="flex space-x-8 px-10 py-4 text-sm font-semibold">
+                <li class="{% if request.path == '/' %}text-white bg-red-700 border-b-2 border-t-2 border-r-4 border-l-4 border-red-700{% else %}hover:text-red-600 cursor-pointer{% endif %}">
                     <a href="http://localhost:8000/">HOME</a>
                 </li>
-                <li href="locallhost:8000/clothes" class="hover:text-red-600 cursor-pointer">
+                <li class="{% if request.path == '/clothes/' %}text-white bg-red-700 border-b-2 border-t-2 border-r-4 border-l-4 border-red-700{% else %}hover:text-red-600 cursor-pointer{% endif %}">
                     <a href="http://localhost:8000/clothes">ROUPAS</a>
                 </li>
-                <li class="hover:text-red-600 cursor-pointer">
+                <li class="{% if request.path == '/about/' %}text-white bg-red-700 border-b-2 border-t-2 border-r-4 border-l-4 border-red-700{% else %}hover:text-red-600 cursor-pointer{% endif %}">
                     <a href="http://localhost:8000/about">SOBRE NÓS</a>
                 </li>
-                <li class="hover:text-red-600 cursor-pointer">
+                <li class="{% if request.path == '/blog/' %}text-white bg-red-700 border-b-2 border-t-2 border-r-4 border-l-4 border-red-700{% else %}hover:text-red-600 cursor-pointer{% endif %}">
                     <a href="http://localhost:8000/blog">BLOG</a>
                 </li>
-                <li class="hover:text-red-600 cursor-pointer">
+                <li class="{% if request.path == '/help/' %}text-white bg-red-700 border-b-2 border-t-2 border-r-4 border-l-4 border-red-700{% else %}hover:text-red-600 cursor-pointer{% endif %}">
                     <a href="http://localhost:8000/help">INFORMAÇÕES</a>
                 </li>
             </ul>
-            <div class="flex items-center space-x-1 mr-20 text-sm font-semibold">
-                <span class="hover:text-red-600 cursor-pointer">
+            <div class="flex items-center space-x-1 mr-10 text-sm font-semibold">
+                <span class="{% if request.path == '/singUp/' %}text-white bg-red-700 border-b-2 border-t-2 border-r-4 border-l-4 border-red-700{% else %}hover:text-red-600 cursor-pointer{% endif %}">
                     <a href="http://localhost:8000/singUp">ENTRAR</a>
                 </span>
                 <span class="material-icons">person</span>
             </div>
         </div>
     </nav>
-    
-    <div class="container">
+
+    <div class="border-t border-gray-300"></div>
+
+    <div class="flex w-full justify-center">
         {% block content %}
         {% endblock %}
     </div>
